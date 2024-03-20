@@ -11,7 +11,7 @@
 | 05 | Dynamic Programming | 동적계획법 | ⭐⭐⭐⭐ | 0 |
 | 06 | Graph | 그래프 | ⭐⭐⭐ | 0 |
 | 07 | Binary Search | 이분탐색 | ⭐⭐⭐⭐ | 0 |
-| 08 | Greedy | 그리디 | ⭐⭐⭐ | 0 |
+| 08 | Greedy | 그리디 | ⭐⭐⭐ | 1 |
 | 09 | String | 문자열 | ⭐⭐⭐⭐⭐ | 0 |
 | 10 | Prefix Sum | 누적 합 | ⭐⭐⭐⭐ | 0 |
 | 11 | Divide and conquer | 분할정복 | ⭐⭐⭐ | 0 |
