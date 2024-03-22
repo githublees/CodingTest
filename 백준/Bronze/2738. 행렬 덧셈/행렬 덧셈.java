@@ -11,22 +11,23 @@ public class Main {
 		int M = Integer.parseInt(st.nextToken());
 		
 		int[][] matrix_1 = new int[N][M];
-		for(int i=0; i<N; i++) {
+		
+		StringBuilder sb = new StringBuilder();
+		for(int i=0; i<N*2; i++) {
+			
 			st = new StringTokenizer(br.readLine());
 			
 			for(int j=0; j<M; j++) {
-				matrix_1[i][j] = Integer.parseInt(st.nextToken());
+				if(i >= N) {
+					matrix_1[i%N][j] += Integer.parseInt(st.nextToken());
+					sb.append(matrix_1[i%N][j]).append(" ");
+				
+				} else matrix_1[i][j] = Integer.parseInt(st.nextToken());
 			}
+			
+			if(i >= N) sb.append("\n");
 		}
 		
-		for(int i=0; i<N; i++) {
-			st = new StringTokenizer(br.readLine());
-			
-			for(int j=0; j<M; j++) {
-				matrix_1[i][j] += Integer.parseInt(st.nextToken());
-				System.out.print(matrix_1[i][j] + " ");
-			}
-			System.out.println();
-		}
+		System.out.println(sb.toString());
 	}
 }
