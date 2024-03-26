@@ -19,8 +19,9 @@ public class Main {
 			for(int i=0; i<k; i++) {
 				for(int j=1; j<=n; j++) {
 					if(j==1) dp[j] = 1;
-					
-					dp[j] = dp[j] + dp[j-1];
+					else {
+						dp[j] = dp[j] + dp[j-1];						
+					}
 				}
 			}
 			System.out.println(dp[n]);
