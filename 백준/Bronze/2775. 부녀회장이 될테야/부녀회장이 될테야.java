@@ -10,18 +10,19 @@ public class Main {
 		for(int tc=0; tc<T; tc++) {
 			int k = Integer.parseInt(br.readLine());
 			int n = Integer.parseInt(br.readLine());
-			// Kn = (K-1)n + Kn-1;
+			
 			int[] dp = new int[n+1];
 			for(int i=1; i<=n; i++) {
 				dp[i] = i;
 			}
 			
+            // Kn = (K-1)n + Kn-1;
 			for(int i=0; i<k; i++) {
 				for(int j=1; j<=n; j++) {
-					if(j==1) dp[j] = 1;
-					else {
+					if(j==1) 
+						dp[j] = 1;
+					else
 						dp[j] = dp[j] + dp[j-1];						
-					}
 				}
 			}
 			System.out.println(dp[n]);
