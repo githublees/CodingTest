@@ -6,11 +6,11 @@ class Solution {
         
         StringBuilder sb = new StringBuilder();
        
-        while(n > k) {
+        while(n > 0) {
             sb.append(n % k);
             n /= k;
         }
-        sb.append(n).reverse();
+        sb.reverse();
         
         String[] prime = sb.toString().split("0");
         ArrayList<Long> p_list = new ArrayList<>();
