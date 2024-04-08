@@ -1,7 +1,4 @@
-
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
+import java.io.*;
 import java.util.PriorityQueue;
 
 public class Main {
@@ -24,10 +21,11 @@ public class Main {
 			
 			int A = pq.poll();
 			int B = pq.poll();
+			int C = A + B;
 			
-			answer += A+B;
+			answer += C;
 			
-			pq.offer(A+B);
+			pq.offer(C);
 		}
 		
 		System.out.println(answer);
