@@ -5,41 +5,27 @@ import java.io.InputStreamReader;
 public class Main {
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        StringBuilder ioi = new StringBuilder();
-        StringBuilder window = new StringBuilder();
 
         int N = Integer.parseInt(br.readLine());
         int M = Integer.parseInt(br.readLine());
-        String[] S = br.readLine().split("");
+        String S = br.readLine();
 
+        int count = 0, answer = 0;
 
-        int length = N*2+1;
-        int answer = 0;
+        for (int i = 1; i < M-1; i++) {
+            if (S.charAt(i-1) == 'I' && S.charAt(i) == 'O' && S.charAt(i+1) == 'I') {
+                count++;
 
-        for (int i = 1; i <= length; i++) {
-            if (i % 2 == 0) {
-                ioi.append("O");
+                if (count == N) {
+                    count--;
+                    answer++;
+
+                }
+                i++;
+
             } else {
-                ioi.append("I");
+                count = 0;
             }
-        }
-
-        for (int i = 0; i < length; i++) {
-            window.append(S[i]);
-        }
-
-        for (int i = length; i < M; i++) {
-
-            if (ioi.compareTo((window)) == 0) {
-                answer++;
-            }
-
-            window.deleteCharAt(0);
-            window.append(S[i]);
-        }
-
-        if (ioi.compareTo((window)) == 0) {
-            answer++;
         }
 
         System.out.println(answer);
