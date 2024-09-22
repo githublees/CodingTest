@@ -31,13 +31,13 @@ public class Main {
 
         Arrays.sort(num);
 
-        sequence(new boolean[N], new int[M], 0, 0);
+        sequence(new boolean[N], new int[M], 0);
 
         System.out.println(sb);
 
     }
 
-    private static void sequence(boolean[] visited, int[] arr, int start, int r) {
+    private static void sequence(boolean[] visited, int[] arr, int r) {
 
         if (r == M) {
 
@@ -55,7 +55,7 @@ public class Main {
 
             arr[r] = num[i];
             visited[i] = true;
-            sequence(visited, arr, i+1, r+1);
+            sequence(visited, arr, r+1);
             visited[i] = false;
         }
     }
