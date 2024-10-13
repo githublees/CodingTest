@@ -7,7 +7,7 @@ import java.util.StringTokenizer;
 public class Main {
 
     static int N, K;
-    static int answer;
+    static final int MOD = 1000000000;
 
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
@@ -24,7 +24,7 @@ public class Main {
         for (int i = 2; i <= K; i++) {
             for (int j = 0; j <= N; j++) {
                 for (int k = 0; k <= j; k++) {
-                    dp[i][j] = (dp[i][j] % 1000000000) + (dp[i-1][j-k] % 1000000000);
+                    dp[i][j] = (dp[i][j] % MOD) + (dp[i-1][j-k] % MOD);
                 }
             }
         }
