@@ -76,20 +76,8 @@ public class Main {
                 examiner[nx][ny] = pos.type;
                 pq.offer(new Pos(nx, ny, pos.type, pos.second+1));
             }
-
-//            print();
         }
 
         return examiner[X-1][Y-1];
-    }
-
-    private static void print() {
-        for (int i = 0; i < N; i++) {
-            for (int j = 0; j < N; j++) {
-                System.out.print(examiner[i][j] + " ");
-            }
-            System.out.println();
-        }
-        System.out.println();
     }
 }
