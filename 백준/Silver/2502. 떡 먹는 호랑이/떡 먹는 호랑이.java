@@ -13,8 +13,8 @@ public class Main {
         int K = Integer.parseInt(st.nextToken());
         int[] dp = new int[D+1];
 
-        for (int A = 1; A <= 50000; A++) {
-            for (int B = A; B <= 100000; B++) {
+        for (int A = 1; A < K/2; A++) {
+            for (int B = A + 1; B < K; B++) {
 
                 dp[1] = A;
                 dp[2] = B;
