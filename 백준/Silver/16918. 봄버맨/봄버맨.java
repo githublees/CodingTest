@@ -1,31 +1,16 @@
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.LinkedList;
-import java.util.Queue;
 import java.util.StringTokenizer;
 
 public class Main {
 
     static int R, C, N;
-    static char[][] map;
+    static int[][] map;
 
     static int[] dx = {-1, 1, 0, 0};
     static int[] dy = {0, 0, -1, 1};
-    static Queue<Bomb> q;
-
-    static class Bomb {
-        int x;
-        int y;
-        int t;
-
-        public Bomb(int x, int y, int t) {
-            this.x = x;
-            this.y = y;
-            this.t = t;
-        }
-    }
-
+    
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         StringTokenizer st = new StringTokenizer(br.readLine());
@@ -33,16 +18,16 @@ public class Main {
         R = Integer.parseInt(st.nextToken());
         C = Integer.parseInt(st.nextToken());
         N = Integer.parseInt(st.nextToken());
-
-        map = new char[R][C];
-        q = new LinkedList<>();
+        map = new int[R][C];
 
         for (int i = 0; i < R; i++) {
             String str = br.readLine();
             for (int j = 0; j < C; j++) {
-                map[i][j] = str.charAt(j);
-                if (map[i][j] == 'O') {
-                    q.offer(new Bomb(i, j, 1));
+                if (str.charAt(j) == '.') {
+                    map[i][j] = -1;
+                }
+                else {
+                    map[i][j] = 1;
                 }
             }
         }
@@ -51,7 +36,21 @@ public class Main {
         print();
     }
 
+    private static void print() {
+        for (int i = 0; i < R; i++) {
+            for (int j = 0; j < C; j++) {
+                if (map[i][j] == -1) {
+                    System.out.print('.');
+                } else {
+                    System.out.print('O');
+                }
+            }
+            System.out.println();
+        }
+    }
+
     private static void progress() {
+
         for (int time = 1; time <= N; time++) {
             if (time != 1) {
                 install();
@@ -60,57 +59,43 @@ public class Main {
         }
     }
 
-    private static void print() {
+    private static void bombCheck() {
+
         for (int i = 0; i < R; i++) {
             for (int j = 0; j < C; j++) {
-                System.out.print(map[i][j]);
-            }
-            System.out.println();
-        }
-        System.out.println();
-    }
+                if (map[i][j] == -1) {
+                    continue;
+                }
 
-    private static void bombCheck() {
-        int size = q.size();
-        boolean[][] range = new boolean[R][C];
-        while (size --> 0) {
-
-            Bomb bomb = q.poll();
-
-            if (bomb.t == 3) {
-                explosion(bomb.x, bomb.y, range);
-            } else {
-                if (range[bomb.x][bomb.y]) {
-                    map[bomb.x][bomb.y] = '.';
+                if (map[i][j] == 3) {
+                    explosion(i, j);
                 }
                 else {
-                    q.offer(new Bomb(bomb.x, bomb.y, bomb.t + 1));
+                    map[i][j]++;
                 }
             }
         }
     }
 
-    private static void explosion(int x, int y, boolean[][] range) {
-        map[x][y] = '.';
+    private static void explosion(int x, int y) {
+        map[x][y] = -1;
         for (int d = 0; d < 4; d++) {
             int nx = x + dx[d];
             int ny = y + dy[d];
 
-            if (nx < 0 || ny < 0 || nx >= R || ny >= C) {
+            if (nx < 0 || ny < 0 || nx >= R || ny >= C || map[nx][ny] == 3) {
                 continue;
             }
 
-            range[nx][ny] = true;
-            map[nx][ny] = '.';
+            map[nx][ny] = -1;
         }
     }
 
     private static void install() {
         for (int i = 0; i < R; i++) {
             for (int j = 0; j < C; j++) {
-                if (map[i][j] == '.') {
-                    q.offer(new Bomb(i, j, 0));
-                    map[i][j] = 'O';
+                if (map[i][j] == -1) {
+                    map[i][j] = 0;
                 }
             }
         }
