@@ -27,12 +27,12 @@ public class Main {
                 map[i][j] = Integer.parseInt(st.nextToken());
             }
         }
-        solution(0, 0, 0, 0);
+        solution(0, 0);
 
         System.out.println(result);
     }
 
-    private static void solution(int x, int y, int k, int sum) {
+    private static void solution(int k, int sum) {
 
         if (k == K) {
             result = Math.max(result, sum);
@@ -46,7 +46,7 @@ public class Main {
                 }
 
                 visited[i][j] = true;
-                solution(i, j, k+1, sum + map[i][j]);
+                solution(k+1, sum + map[i][j]);
                 visited[i][j] = false;
             }
         }
