@@ -29,11 +29,10 @@ public class Main {
         }
 
         String answer = A.gcd(B).toString();
-        System.out.println(answer.length() > 9 ? answer.substring(answer.length() - 9) : answer);
-    }
-
-    public static int gcd(int a, int b) {
-        if (b == 0) return a;
-        return gcd(a, b%a);
+        
+        System.out.println(
+                answer.length() > 9 ? 
+                        answer.substring(answer.length() - 9) : answer
+        );
     }
 }
