@@ -45,7 +45,7 @@ public class Main {
             }
 
             if (answer <= K) {
-                max = Math.max(max, mid);
+                max = mid;
                 start = mid + 1;
             } else {
                 end = mid - 1;
