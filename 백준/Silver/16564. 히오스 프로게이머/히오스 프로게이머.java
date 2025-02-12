@@ -42,9 +42,10 @@ public class Main {
             long answer = 0;
 
             for (int i = 0; i < N; i++) {
-                if (level[i] <= mid) {
-                    answer += mid - level[i];
+                if (level[i] > mid) {
+                    break;
                 }
+                answer += mid - level[i];
             }
 
             if (answer <= K) {
