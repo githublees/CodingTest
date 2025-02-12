@@ -1,14 +1,13 @@
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.Arrays;
 import java.util.StringTokenizer;
 
 public class Main {
 
     static int N, K;
     static int[] level;
-    static long max = 0;
+    static long max = Long.MAX_VALUE;
 
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
@@ -19,11 +18,9 @@ public class Main {
         level = new int[N];
 
         for (int i = 0; i < N; i++) {
-            int X = Integer.parseInt(br.readLine());
-            level[i] = X;
+            level[i] = Integer.parseInt(br.readLine());
+            max = Math.min(max, level[i]);
         }
-
-        Arrays.sort(level);
 
         binarySearch();
 
@@ -32,7 +29,7 @@ public class Main {
 
     private static void binarySearch() {
 
-        long start = level[0];
+        long start = max;
         long end = start + K;
 
         while (start <= end) {
@@ -42,10 +39,9 @@ public class Main {
             long answer = 0;
 
             for (int i = 0; i < N; i++) {
-                if (level[i] > mid) {
-                    break;
+                if (level[i] <= mid) {
+                    answer += mid - level[i];
                 }
-                answer += mid - level[i];
             }
 
             if (answer <= K) {
