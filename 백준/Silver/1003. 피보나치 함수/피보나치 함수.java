@@ -17,7 +17,9 @@ public class Main {
             if (N == 0) {
                 System.out.println("1 0");
                 continue;
-            } else if (N == 1) {
+            }
+            
+            if (N == 1) {
                 System.out.println("0 1");
                 continue;
             }
